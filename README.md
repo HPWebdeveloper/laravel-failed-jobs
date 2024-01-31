@@ -1,15 +1,18 @@
 <p align="center">
 <a href="https://github.com/HPWebdeveloper/laravel-failed-jobs/actions"><img src="https://github.com/HPWebdeveloper/laravel-failed-jobs/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/HPWebdeveloper/laravel-failed-jobs"><img src="https://img.shields.io/packagist/dt/HPWebdeveloper/laravel-failed-jobs" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/HPWebdeveloper/laravel-failed-jobs"><img src="https://img.shields.io/packagist/v/HPWebdeveloper/laravel-failed-jobs" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/HPWebdeveloper/laravel-failed-jobs"><img src="https://img.shields.io/packagist/l/HPWebdeveloper/laravel-failed-jobs" alt="License"></a>
 </p>
 
 # Laravel Failed Jobs
 
-If you're running an application and the queue driver isn't Redis, which Laravel Horizon supports, you might be missing out on the elegant features it offers. Laravel Horizon is known for its elegance and a wide range of implemented features. One of its standout features is its ability to present detailed information about failed job payloads and automatically load new failed jobs.
+## Introduction:
+
+If you're running an application with a queue driver other than Redis, which is exclusively supported by [Laravel Horizon](https://github.com/laravel/horizon), you might be missing out on the elegant features that Horizon offers. Laravel Horizon is known for its elegance and a wide range of implemented features. One of its standout features is its ability to present detailed information about failed job payloads and automatically load new failed jobs.
 
 In your specific application, if you've been longing for a similar Horizon-like UI to monitor failed_jobs, the Laravel-Failed-Jobs package has got you covered. This package simplifies the process of visualizing failed jobs.
+
+![Screenshot 2024-02-01 at 7 55 42 PM](https://github.com/HPWebdeveloper/laravel-failed-jobs/assets/16323354/2ec7ebad-1ad9-4927-8bff-5ce4002e1a7c)
 
 ## Key Benefits:
 
@@ -32,12 +35,17 @@ After installing Laravel-Failed-Jobs, publish its assets using the failedjobs:in
 ```bash
 php artisan failedjobs:install
 ```
+## Dashboard
+
+The Laravel-Failed-Jobs dashboard may be accessed via the `/failedjobs` route.
 
 ## Dashboard Authorization
 
-Find `app/Providers/FailedJobsServiceProvider.php` and then follow the same tutorial here:
+Find `app/Providers/FailedJobsServiceProvider.php` and then follow the [same document of Horizon](https://laravel.com/docs/10.x/horizon#dashboard-authorization) to secure the dashboard in production environment.
 
-https://laravel.com/docs/10.x/horizon#dashboard-authorization
+![Screenshot 2024-02-01 at 7 54 17 PM](https://github.com/HPWebdeveloper/laravel-failed-jobs/assets/16323354/05abc4ab-ede6-4e90-b713-bc540015435d)
+
+![Screenshot 2024-02-01 at 7 55 27 PM](https://github.com/HPWebdeveloper/laravel-failed-jobs/assets/16323354/30e1dd9e-316b-4d8e-80a4-ef7df195bbcd)
 
 
 ## Licensing
