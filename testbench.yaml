@@ -1,0 +1,25 @@
+providers:
+  - HPWebdeveloper\LaravelFailedJobs\FaildJobsServiceProvider
+  - Workbench\App\Providers\FailedJobsServiceProvider
+
+env:
+  - REDIS_CLIENT="predis"
+
+migrations: true
+seeders:
+  - Workbench\Database\Seeders\DatabaseSeeder
+
+workbench:
+  start: '/failedjobs'
+  user: 'panjeh@gmail.com'
+  install: true
+  welcome: true
+  build:
+    - asset-publish
+    - create-sqlite-db
+    - db-wipe
+    - migrate-fresh
+  assets: []
+  sync:
+    - from: ./public
+      to: public/vendor/failedjobs
