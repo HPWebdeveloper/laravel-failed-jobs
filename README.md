@@ -16,8 +16,9 @@ In your specific application, if you've been longing for a similar Horizon-like 
 
 ## Key Benefits:
 
-Seamless Integration: You can seamlessly integrate the Laravel-Failed-Jobs package into your project, even if you are already using Laravel Horizon. There's no conflict between the two. While Horizon primarily reads and writes data to Redis, Laravel-Failed-Jobs retrieves data from the failed_jobs table.
-With Laravel-Failed-Jobs, you can enjoy the convenience of monitoring failed jobs in your application, regardless of your queue driver. This package brings the power and elegance of Laravel Horizon's failed job handling to your specific setup.
+- Seamless Integration: You can seamlessly integrate the Laravel-Failed-Jobs package into your project, even if you are already using Laravel Horizon. There's no conflict between the two. 
+- While Horizon primarily reads and writes data to Redis, Laravel-Failed-Jobs retrieves data from the failed_jobs table.
+- With Laravel-Failed-Jobs, you can enjoy the convenience of monitoring failed jobs in your application, regardless of your queue driver. This package brings the power and elegance of Laravel Horizon's failed job handling to your specific setup.
 
 
 As you correctly understood, it's important to note that the Laravel-Failed-Jobs package focuses solely on enhancing the visualization of failed jobs and does not offer managing of faild jobs or the comprehensive set of robust features found in Laravel Horizon.
