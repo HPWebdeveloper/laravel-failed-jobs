@@ -38,7 +38,7 @@ php artisan failedjobs:install
 ```
 ## Dashboard
 
-The Laravel-Failed-Jobs dashboard may be accessed via the `/failedjobs` route.
+The Laravel-Failed-Jobs dashboard is accessible through the `/failedjobs` route by default. However, if you wish to define a new path, you can do so by setting the `FAILEDJOBS_PATH` variable in the `.env` file.
 
 ## Dashboard Authorization
 
