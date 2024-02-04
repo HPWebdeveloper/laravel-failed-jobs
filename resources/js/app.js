@@ -23,7 +23,9 @@ if (token) {
 
 Vue.use(VueRouter);
 
-Vue.prototype.$http = axios.create();
+Vue.prototype.$http = axios.create({
+    baseURL: window.FailedJobs.axios_base_url,
+});
 
 window.FailedJobs.basePath = '/' + window.FailedJobs.path;
 

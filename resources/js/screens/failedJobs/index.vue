@@ -54,7 +54,7 @@ export default {
          */
         checkForNewJobs() {
             if (!this.$root.autoLoadsNewEntries) {
-                this.$http.get(FailedJobs.basePath + `/api/?page=1&perPage=1`)
+                this.$http.get(FailedJobs.basePath + `/api/?page=1&perPage=1&access_token=${window.FailedJobs.access_token}`)
                     .then(response => {
                         const newLatestJob = response.data.data[0];
                         if (newLatestJob && newLatestJob.uuid !== this.latestJobUuid) {
@@ -91,7 +91,7 @@ export default {
                 this.ready = false;
             }
 
-            this.$http.get(FailedJobs.basePath + `/api/?page=${this.page}&perPage=${this.perPage}`)
+            this.$http.get(FailedJobs.basePath + `/api/?page=${this.page}&perPage=${this.perPage}&access_token=${window.FailedJobs.access_token}`)
                 .then(response => {
                     // Only update jobs list if auto-loading is enabled or it's not a refresh
                     if (this.$root.autoLoadsNewEntries || !refreshing) {

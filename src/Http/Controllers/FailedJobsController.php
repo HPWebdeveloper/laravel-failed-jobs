@@ -2,13 +2,24 @@
 
 namespace HPWebdeveloper\LaravelFailedJobs\Http\Controllers;
 
+use HPWebdeveloper\LaravelFailedJobs\Http\Middleware\AuthorizeFailedJobsByAccessToken;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Routing\Controller as BaseController;
 
 
-class FailedJobsController extends Controller
+class FailedJobsController extends BaseController
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(AuthorizeFailedJobsByAccessToken::class);
+    }
 
     public function index(Request $request)
     {

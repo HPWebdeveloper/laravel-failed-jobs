@@ -43,4 +43,13 @@ return [
 
     'middleware' => ['web'],
 
+
+
+    'axios_base_url' => env('AXIOS_BASE_URL', ''),
+
+    'server_access_token' => env('FAILEDJOBS_SERVER_ACCESS_TOKEN'),
+
+    'dashboard_access_token' => env('FAILEDJOBS_DASHBOARD_ACCESS_TOKEN'),
+
+
 ];

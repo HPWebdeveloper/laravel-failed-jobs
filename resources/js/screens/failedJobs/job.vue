@@ -21,7 +21,8 @@ export default {
     methods: {
         loadFailedJob(id) {
             this.ready = false;
-            this.$http.get(FailedJobs.basePath + '/api/' + id)
+            const uri = `${FailedJobs.basePath}/api/${id}?access_token=${window.FailedJobs.access_token}`;
+            this.$http.get(uri)
                 .then(response => {
                     this.job = response.data;
                     console.log(this.job);
