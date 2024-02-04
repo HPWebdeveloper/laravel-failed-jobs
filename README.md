@@ -59,11 +59,15 @@ who can access the dashboard in production environment.
 
 ## Dashboard
 
-The Laravel-Failed-Jobs dashboard is accessible through the `/failedjobs` route by default. However, if you wish to define a new path, you can do so by setting the `FAILEDJOBS_PATH` variable in the `.env` file.
+The Laravel-Failed-Jobs dashboard is accessible through the `/failedjobs` route by default. 
+However, if you wish to define a new path, you can do so by setting the `FAILEDJOBS_PATH` variable in the `.env` file.
 
 ## Dashboard Authorization
 
-Find `app/Providers/FailedJobsServiceProvider.php` class which applies Laravel `Gate` to determine who can access FailedJobs in non-local environments. and then follow the [same document of Horizon](https://laravel.com/docs/10.x/horizon#dashboard-authorization) to secure the dashboard in production environment.
+The`app/Providers/FailedJobsServiceProvider.php` class applies Laravel `Gate` to determine 
+who can access FailedJobs in non-local environments. You need to follow the 
+[same document of Horizon](https://laravel.com/docs/10.x/horizon#dashboard-authorization) 
+to secure the dashboard in production environment.
 
 ![Screenshot 2024-02-01 at 7 54 17 PM](https://github.com/HPWebdeveloper/laravel-failed-jobs/assets/16323354/05abc4ab-ede6-4e90-b713-bc540015435d)
 
@@ -74,10 +78,11 @@ Remote mode enables access to the main application from a separate Laravel appli
 hosted on a distinct URL address, in both local and production environments.
 
 ### Prepare package in both applications
-To use this package in remote mode, you need to install the package in both different applications.
+To use this package in remote mode, you need to install the package in both main and remote applications.
 
-You may install the Laravel-Failed-Jobs package into your project using the Composer package manager:
+You may install the Laravel-Failed-Jobs package into your project using the composer package manager:
 
+Note: currently the remote feature is under `feature/remote-connect` branch.
 ```bash
 composer require hpwebdeveloper/laravel-failed-jobs:dev-feature/remote-connect
 ```
@@ -101,7 +106,7 @@ Setting this variable is mandatory in remote mode.
 
 `server_access_token` is the access token to access the main application from the remote application. 
 It is mandatory to set this variable in the main application `.env` file. 
-It is mandatory to set 'dashboard_access_token' variable in the 
+It is mandatory to set `dashboard_access_token` variable in the 
 remote application equal to the value of the `server_access_token` in the main application.
 
 ### Secure the endpoint
@@ -117,8 +122,8 @@ dealing with two different applications served in two different URLs. Laravel au
 OPTIONS HTTP requests with values that you configure in the `cors` config file. Read more about [CORS](https://laravel.com/docs/10.x/routing#cors).
 
 Hence in summary
-- Set the `FAILEDJOBS_PATH` variable in the `.env` file of the **main** application with a hash value like `failedjobs99999999`
-- Set the `FAILEDJOBS_PATH` variable in the `.env` file of the **remote** application with a hash value like `failedjobs99999999`
+- Set the `FAILEDJOBS_PATH` variable in the `.env` file of the **main** application with a hash value like `failedjobs_4a5b6c7d`
+- Set the `FAILEDJOBS_PATH` variable in the `.env` file of the **remote** application with a hash value like `failedjobs_4a5b6c7d`
 - Open the `cors.php` config file of the main application and add modify the following code:
 ```php
 // before
