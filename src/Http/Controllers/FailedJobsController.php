@@ -4,6 +4,7 @@ namespace HPWebdeveloper\LaravelFailedJobs\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 
 class FailedJobsController extends Controller
@@ -42,6 +43,14 @@ class FailedJobsController extends Controller
 
     public function show($uuid)
     {
+        $validator = Validator::make(['uuid' => $uuid], [
+            'uuid' => 'required|uuid',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['message' => 'Invalid UUID format'], 400);
+        }
+
         $failedJob = DB::table('failed_jobs')->where('uuid', $uuid)->first();
 
         if (!$failedJob) {
