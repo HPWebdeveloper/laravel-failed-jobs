@@ -6,6 +6,7 @@ use HPWebdeveloper\LaravelFailedJobs\Http\Middleware\AuthorizeFailedJobsByAccess
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Validator;
 
 
 class FailedJobsController extends BaseController
