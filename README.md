@@ -31,7 +31,7 @@ hosted on a distinct URL address, in both local and production environments.
 
 As you correctly understood, it's important to note that the Laravel-Failed-Jobs package focuses solely on enhancing the visualization of failed jobs and does not offer managing of faild jobs or the comprehensive set of robust features found in Laravel Horizon.
 
-## I - Installation (basice mode):
+## I - Installation (basic mode):
 If you have already installed Laravel Horizon, you can still install Laravel-Failed-Jobs without any conflict.
 Also it follows the same installation process as Laravel Horizon.
 
