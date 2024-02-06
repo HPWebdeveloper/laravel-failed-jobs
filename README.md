@@ -155,10 +155,9 @@ with a hash value like `failedjobs_4a5b6c7d`
 
 Then access the dashboard using the following URL: `http://your-local-application.test/failedjobs_4a5b6c7d`.
 
-As your main application in the production is configure like `APP_ENV=production` 
-the dashboard in not accessible in the production environment.
-While you can access the dashboard in the local environment. 
-through the URL: `http://your-local-application.test/failedjobs_4a5b6c7d`.
+As your main application is configured like `APP_ENV=production` 
+the Failed-Jobs dashboard is not accessible in the production environment.
+While you can access the dashboard in the local environment through this URL: `http://your-local-application.test/failedjobs_4a5b6c7d`.
 
 Of course you can access the dashboard in the main application 
 if you set the `axios_base_url` variable in the main application `.env` file as well.
