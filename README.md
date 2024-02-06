@@ -145,7 +145,7 @@ Hence in summary
 with a hash value like `failedjobs_4a5b6c7d`
 - Set the `FAILEDJOBS_PATH` variable in the `.env` file of the **remote** application 
 with a hash value like `failedjobs_4a5b6c7d`
-- Open the `cors.php` config file of the main application and add modify the following code:
+- Open the `cors.php` config file of the main application and modify the following code accordingly:
 ```php
 // before
         'paths' => ['api/*', 'sanctum/csrf-cookie'],
