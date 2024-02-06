@@ -8,17 +8,30 @@
 
 ## Introduction:
 
-If you're running an application with a queue driver other than Redis or dispatch a job to [a particular connection](https://laravel.com/docs/10.x/queues#dispatching-to-a-particular-connection) other than Redis, which is exclusively supported by [Laravel Horizon](https://laravel.com/docs/10.x/horizon), you might be missing out on the elegant features that Horizon offers. Laravel Horizon is known for its elegance and a wide range of implemented features. One of its standout features is its ability to present detailed information about failed job payloads and automatically load new failed jobs.
+If you're running an application with a queue driver other than Redis or dispatch a job to 
+[a particular connection](https://laravel.com/docs/10.x/queues#dispatching-to-a-particular-connection) 
+other than Redis, which is exclusively supported by [Laravel Horizon](https://laravel.com/docs/10.x/horizon), 
+you might be missing out on the elegant features that Horizon offers. 
+Laravel Horizon is known for its elegance and a wide range of implemented features. 
+One of its standout features is its ability to present detailed information about failed job payloads 
+and automatically load new failed jobs.
 
-In your specific application, if you've been longing for a similar Horizon-like UI to monitor failed jobs, the Laravel-Failed-Jobs package has got you covered. This package streamlines the visualization of failed jobs, eliminating the need to connect to a database client locally and search through `failed_jobs` records to identify the cause of a job's failure.
+In your specific application, if you've been longing for a similar Horizon-like UI to monitor failed jobs, 
+the Laravel-Failed-Jobs package has got you covered. This package streamlines the visualization of failed jobs, 
+eliminating the need to connect to a database client locally and search through `failed_jobs` records to identify 
+the cause of a job's failure.
 
 ![Screenshot 2024-02-01 at 7 55 42 PM](https://github.com/HPWebdeveloper/laravel-failed-jobs/assets/16323354/2ec7ebad-1ad9-4927-8bff-5ce4002e1a7c)
 
 ## Key Benefits:
 
-- Seamless Integration: You can seamlessly integrate the Laravel-Failed-Jobs package into your project, even if you are already using Laravel Horizon. There's no conflict between the two. 
-- While Horizon primarily reads and writes data to Redis, Laravel-Failed-Jobs retrieves data from the failed_jobs table.
-- With Laravel-Failed-Jobs, you can enjoy the convenience of monitoring failed jobs in your application, regardless of your queue driver. This package brings the power and elegance of Laravel Horizon's failed job handling to your specific setup.
+- Seamless Integration: You can seamlessly integrate the Laravel-Failed-Jobs package into your project, 
+even if you are already using Laravel Horizon. There's no conflict between the two. 
+- While Horizon primarily reads and writes data to Redis, Laravel-Failed-Jobs retrieves 
+data from the failed_jobs table.
+- With Laravel-Failed-Jobs, you can enjoy the convenience of monitoring failed jobs in your application, 
+regardless of your queue driver. This package brings the power and elegance 
+of Laravel Horizon's failed job handling to your specific setup.
 - Remote Connection Mode: This package offers two operational modes, each with its distinct setup. 
 The Basic mode setup and dashboard authentication mirror that of Laravel Horizon. 
 Remote mode is particularly beneficial for applications functioning solely as API service providers, 
@@ -29,7 +42,9 @@ is not applicable.
 Remote mode enables access to the main application from a separate Laravel application, 
 hosted on a distinct URL address, in both local and production environments.
 
-As you correctly understood, it's important to note that the Laravel-Failed-Jobs package focuses solely on enhancing the visualization of failed jobs and does not offer managing of faild jobs or the comprehensive set of robust features found in Laravel Horizon.
+As you correctly understood, it's important to note that the Laravel-Failed-Jobs package focuses 
+solely on enhancing the visualization of failed jobs and does not offer managing of failed jobs or 
+the comprehensive set of robust features found in Laravel Horizon.
 
 ## I - Installation (basic mode):
 If you have already installed Laravel Horizon, you can still install Laravel-Failed-Jobs without any conflict.
@@ -45,7 +60,8 @@ After installing Laravel-Failed-Jobs, publish the assets using the `failedjobs:i
 ```bash
 php artisan failedjobs:install
 ```
-This command will automatically publish the `failedjobs` config file, `FailedJobsServiceProvider` service provider and also the resource view files into the `public/vendor/failedjobs` directory.
+This command will automatically publish the `failedjobs` config file, `FailedJobsServiceProvider` 
+service provider and also the resource view files into the `public/vendor/failedjobs` directory.
 
 To upgrade the package, you need to use the following command after upgrading via composer:
 
@@ -115,15 +131,20 @@ by default.
 But it is recommended to change it when using the package in the remote mode. 
 
 It is simply possible by setting the `FAILEDJOBS_PATH` variable in the `.env` 
-file of both applications with a hash value and then define that value as a path in the `cors` config file of the main application.
+file of both applications with a hash value and then define that value as a path in the `cors` config file 
+of the main application.
 
 Modifying the `cors` config file in the main application is required because in the remote mode we are
-dealing with two different applications served in two different URLs. Laravel automatically respond to Cross-Origin Resource Sharing (CORS) 
-OPTIONS HTTP requests with values that you configure in the `cors` config file. Read more about [CORS](https://laravel.com/docs/10.x/routing#cors).
+dealing with two different applications served in two different URLs. 
+Laravel automatically respond to Cross-Origin Resource Sharing (CORS) 
+OPTIONS HTTP requests with values that you configure in the `cors` config file. 
+Read more about [CORS](https://laravel.com/docs/10.x/routing#cors).
 
 Hence in summary
-- Set the `FAILEDJOBS_PATH` variable in the `.env` file of the **main** application with a hash value like `failedjobs_4a5b6c7d`
-- Set the `FAILEDJOBS_PATH` variable in the `.env` file of the **remote** application with a hash value like `failedjobs_4a5b6c7d`
+- Set the `FAILEDJOBS_PATH` variable in the `.env` file of the **main** application 
+with a hash value like `failedjobs_4a5b6c7d`
+- Set the `FAILEDJOBS_PATH` variable in the `.env` file of the **remote** application 
+with a hash value like `failedjobs_4a5b6c7d`
 - Open the `cors.php` config file of the main application and add modify the following code:
 ```php
 // before
@@ -134,8 +155,10 @@ Hence in summary
 
 Then access the dashboard using the following URL: `http://your-local-application.test/failedjobs_4a5b6c7d`.
 
-As your main application in the production is configure like `APP_ENV=production` the dashboard in not accessible in the production environment.
-While you can access the dashboard in the local environment. through the URL: `http://your-local-application.test/failedjobs_4a5b6c7d`.
+As your main application in the production is configure like `APP_ENV=production` 
+the dashboard in not accessible in the production environment.
+While you can access the dashboard in the local environment. 
+through the URL: `http://your-local-application.test/failedjobs_4a5b6c7d`.
 
 Of course you can access the dashboard in the main application 
 if you set the `axios_base_url` variable in the main application `.env` file as well.
@@ -144,6 +167,8 @@ if you set the `axios_base_url` variable in the main application `.env` file as 
 
 This repository uses two licenses:
 
-- The original codebase is distributed under the MIT License (MIT) (Copyright (c) Taylor Otwell), which you can find in the [LICENSE](https://github.com/HPWebdeveloper/laravel-failed-jobs/blob/main/LICENSE.md) file.
+- The original codebase is distributed under the MIT License (MIT) (Copyright (c) Taylor Otwell), 
+which you can find in the [LICENSE](https://github.com/HPWebdeveloper/laravel-failed-jobs/blob/main/LICENSE.md) file.
 
-- Any modifications made to the original codebase are subject to our own license, which you can find in the [LICENSE](https://github.com/HPWebdeveloper/laravel-failed-jobs/blob/main/LICENSE.md) file.
+- Any modifications made to the original codebase are subject to our own license, 
+which you can find in the [LICENSE](https://github.com/HPWebdeveloper/laravel-failed-jobs/blob/main/LICENSE.md) file.
