@@ -18,7 +18,7 @@ and automatically load new failed jobs.
 
 In your specific application, if you've been longing for a similar Horizon-like UI to monitor failed jobs, 
 the Laravel-Failed-Jobs package has got you covered. This package streamlines the visualization of failed jobs, 
-eliminating the need to connect to a database client locally and search through `failed_jobs` records to identify 
+eliminating the need to connect to a database client and search through `failed_jobs` records to identify 
 the cause of a job's failure.
 
 ![Screenshot 2024-02-01 at 7 55 42 PM](https://github.com/HPWebdeveloper/laravel-failed-jobs/assets/16323354/2ec7ebad-1ad9-4927-8bff-5ce4002e1a7c)
@@ -30,10 +30,10 @@ even if you are already using Laravel Horizon. There's no conflict between the t
 - While Horizon primarily reads and writes data to Redis, Laravel-Failed-Jobs retrieves 
 data from the failed_jobs table.
 - With Laravel-Failed-Jobs, you can enjoy the convenience of monitoring failed jobs in your application, 
-regardless of your queue driver. This package brings the power and elegance 
-of Laravel Horizon's failed job handling to your specific setup.
+regardless of your queue driver. This package brings the elegance 
+of Laravel Horizon's failed jobs UI to your specific setup.
 - Remote Connection Mode: This package offers two operational modes, each with its distinct setup. 
-The Basic mode setup and dashboard authentication mirror that of Laravel Horizon. 
+The Basic mode setup enabling dashboard authentication mirror that of Laravel Horizon. 
 Remote mode is particularly beneficial for applications functioning solely as API service providers, 
 where there is no user model or admin user. 
 In such scenarios, the Gate definition within `FailedJobsServiceProvider`, 
